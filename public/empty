@@ -1,0 +1,220 @@
+// import React, { useState, useRef } from 'react';
+// import { useLocation, useNavigate } from 'react-router-dom';
+// import styles from './OtpForm.module.css';
+
+// const OtpForm = () => {
+//   const [otp, setOtp] = useState(new Array(6).fill(''));
+//   const inputRefs = useRef([]);
+//   const navigate = useNavigate();
+//   const[loading ,setLoading]=useState(false);
+//   const[error,setError]=useState('');
+//   const location=useLocation();
+
+//    const email = location.state?.email || '';
+
+//   const handleChange = (element, index) => {
+//     if (isNaN(element.value)) return false; // only numbers
+
+//     setOtp(otp.map((data, idx) => (idx === index ? element.value : data)));
+
+//     // Move to next input if filled
+//     if (element.value !== '' && index < otp.length - 1) {
+//       inputRefs.current[index + 1].focus();
+//     }
+//   };
+
+//   const handleKeyDown = (element, index) => {
+//     // Move to previous on backspace
+//     if (
+//       element.key === 'Backspace' &&
+//       element.target.value === '' &&
+//       index > 0
+//     ) {
+//       inputRefs.current[index - 1].focus();
+//     }
+//   };
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     const enteredOtp = otp.join('');
+//     console.log('Submitted OTP:', enteredOtp);
+
+//     // Dummy check: OTP must be 6 digits
+//     if (enteredOtp.length === 6) {
+//       navigate('/contactspage');
+
+//     } else {
+//       alert('Please enter all 6 digits of the OTP');
+//     }
+//     setLoading(true);
+//     setError('');
+//      fetch('http://localhost:8080/signup/validate-otp', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify({
+//         email: email,
+//         otp: enteredOtp,
+//       }),
+//     })
+//       .then((response) => {
+//         if (!response.ok) {
+//           throw new Error(`HTTP error! Status: ${response.status}`);
+//         }
+//         return response.json();
+//       })
+//       .then((data) => {
+//         console.log('OTP Validation Response:', data);
+//         alert(data.message); // e.g. "Signup OTP verified successfully"
+//         navigate('/contactspage');
+//       })
+//       .catch((err) => {
+//         console.error('Error validating OTP:', err);
+//         setError('Invalid OTP or server error. Please try again.');
+//       })
+//       .finally(() => {
+//         setLoading(false);
+//       });
+//   };
+
+//   return (
+//     <div className={styles.container}>
+//       <h1 className={styles.header}>Enter OTP</h1>
+//       <form onSubmit={handleSubmit} className={styles.form}>
+//         <div className={styles.otpBox}>
+//           {otp.map((data, index) => (
+//             <input
+//               key={index}
+//               type="text"
+//               maxLength="1"
+//               value={data}
+//               onChange={(e) => handleChange(e.target, index)}
+//               onKeyDown={(e) => handleKeyDown(e, index)}
+//               ref={(el) => (inputRefs.current[index] = el)}
+//               className={styles.otpInput}
+//             />
+//           ))}
+//         </div>
+//         <button type="submit" className={styles.submitBtn}>
+//           Verify OTP
+//         </button>
+//       </form>
+//     </div>
+//   );
+// };
+//java -jar wiremock-standalone-4.0.0-beta.14.jar --port 8080 --enable-stub-cors slve cors error
+
+// export default OtpForm;
+// import card1 from './card1.png'
+// import card2 from './card2.png'
+// import card3 from './card3.png'
+// import card4 from './card4.png'
+// import underConstruction from'./underCinstruction.jpg'
+// export const images = {
+// card1, card2, card3, card4,underConstruction
+// }
+
+// import React from 'react';
+// import ContactsPage from '../../Components/ContactsPage/ContactsPage';
+// import { Icons } from '../../Images/Icons';
+// import styles from './HomePage.module.css';
+
+// function HomePage() {
+//   return (
+//     <div className={styles.container}>
+      
+//       <div className={styles.header}>
+//         <div className={styles.menuIcon}>
+//           <Icons.MenuIcon />
+//         </div>
+//         <div className={styles.title}>
+//           <Icons.TelegramIcon className={styles.telegramLogo} />
+//           Telegram
+//         </div>
+//         <div className={styles.searchIcon}>
+//           <Icons.SearchIcon />
+//         </div>
+//       </div>
+
+      
+//       <div className={styles.body}>
+//         <ContactsPage />
+//       </div>
+//     </div>
+//   );
+// }
+
+// export default HomePage;
+// import React, { useEffect, useState } from "react";
+// import styles from "./ListOfContactsPage.module.css";
+
+// const ListOfContactsPage = () => {
+//   const [contact, setContact] = useState(null);
+//   const [loading, setLoading] = useState(true);
+//   const [error, setError] = useState("");
+
+//   useEffect(() => {
+    
+//     fetch("http://localhost:8080/v1/messages/+1-202-555-0143", {
+//       method: "GET",
+//       headers: {
+//         "Content-Type": "application/json"
+//       }
+//     })
+//       .then((response) => {
+//         if (!response.ok) {
+//           throw new Error(`HTTP error! Status: ${response.status}`);
+//         }
+//         return response.json();
+//       })
+//       .then((data) => {
+//         console.log("Messages API data:", data);
+//         setContact(data);
+//       })
+//       .catch((err) => {
+//         console.error("Error fetching messages:", err);
+//         setError("Failed to load messages");
+//       })
+//       .finally(() => setLoading(false));
+//   }, []);
+
+//   if (loading) {
+//     return <p className={styles.loading}>Loading messages...</p>;
+//   }
+
+//   if (error) {
+//     return <p className={styles.error}>{error}</p>;
+//   }
+
+//   if (!contact) {
+//     return <p className={styles.empty}>No contact found</p>;
+//   }
+
+//   return (
+//     <div className={styles.container}>
+//       <h2 className={styles.header}>Chat with {contact.name}</h2>
+//       <div className={styles.chatBox}>
+//         {contact.messages.map((msg) => (
+//           <div
+//             key={msg.id}
+//             className={
+//               msg.sender === "You"
+//                 ? styles.messageOutgoing
+//                 : styles.messageIncoming
+//             }
+//           >
+//             <div className={styles.sender}>{msg.sender}</div>
+//             <div className={styles.text}>{msg.message}</div>
+//             <div className={styles.time}>
+//               {new Date(msg.time).toLocaleString()}
+//             </div>
+//           </div>
+//         ))}
+//       </div>
+//       //input box to text somthing
+//     </div>
+//   );
+// };
+
+// export default ListOfContactsPage;

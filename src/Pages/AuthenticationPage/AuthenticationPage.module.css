@@ -1,0 +1,45 @@
+
+.container {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 25px;
+  background: #b9d6ee;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.tabs {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.tabs button {
+  background: #eee;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background 0.3s;
+}
+
+.tabs button:hover {
+  background: #ddd;
+}
+
+.tabs .active {
+  background: #4cafef;
+  color: white;
+}
+
+.formWrapper {
+  margin-top: 20px;
+}
