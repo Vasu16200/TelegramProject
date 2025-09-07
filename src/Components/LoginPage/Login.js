@@ -43,7 +43,7 @@ function Login() {
     e.preventDefault();
     console.log("Verifying OTP:", otp);
     if (otp.length === 6) {
-      navigate("/contactspage");
+      navigate("/homepages");
     } else {
       alert("Please enter a valid 6-digit OTP");
     }

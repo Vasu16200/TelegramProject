@@ -218,3 +218,6 @@
 // };
 
 // export default ListOfContactsPage;
+//i have a search bar component that search and filter contacts name lowercase and i have a another components 
+// like conact name card but my search component in my parent component and conact card compknents that map conact l
+// ike a card but i wish to onachangee tha card potiton like my search bar in react

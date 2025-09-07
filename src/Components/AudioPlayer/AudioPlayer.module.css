@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+button:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.audioIcon, .playIcon {
+  color: #6200ea; 
+  font-size: 28px;
+}
+
+.clearButton {
+  color: #d32f2f; 
+  font-size: 24px;
+}
+
+audio {
+  display:block ; 
+}
