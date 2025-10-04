@@ -17,7 +17,8 @@ import AuthenticationPage from "../Pages/AuthenticationPage";
 import AudioPlayer from "../Components/AudioPlayer";
 import VideoUploader from "../Components/VideoUploader";
 import FileUploader from "../Components/FileUploader/FileUploader";
-
+import Optionpage from "../Components/optionToHomepage/Optionpage";
+import Sidebar from "../Components/SlideBar/SlideBar";
 function RootLayout() {
   return (
     <div>
@@ -44,6 +45,8 @@ const router = createBrowserRouter(
       <Route path="videoUploader" element={<VideoUploader />} />
 
       <Route path="fileUploader" element={<FileUploader />} />
+      <Route path="option" element={<Optionpage/>} />
+      <Route path="slideBar" element={<Sidebar/>}/>
     </Route>
   )
 );

@@ -18,6 +18,10 @@
 .tabs {
   text-align: center;
   margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
 }
 
 .tabs button {

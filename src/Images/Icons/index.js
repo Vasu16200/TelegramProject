@@ -12,11 +12,14 @@ import CallIcon from '@mui/icons-material/Call';
 import AttachFileIcon from '@mui/icons-material/AttachFile';
 import CameraAltIcon from '@mui/icons-material/CameraAlt';
 import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
-
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import SettingsIcon from '@mui/icons-material/Settings';
+import GroupAddIcon from '@mui/icons-material/GroupAdd';
 export const Icons={
     MenuIcon ,SearchIcon,TelegramIcon,AccountBoxIcon,MoreVertIcon,
     PauseIcon,PlayArrowIcon,KeyboardVoiceIcon,DeleteForeverIcon,SendIcon,
-    CallIcon,AttachFileIcon,CameraAltIcon,CloudDownloadIcon
+    CallIcon,AttachFileIcon,CameraAltIcon,CloudDownloadIcon,AccountCircleIcon
+    ,SettingsIcon,GroupAddIcon
 }
 
 

@@ -4,8 +4,12 @@ import { Icons } from "../../Images/Icons";
 import styles from "./HomePage.module.css";
 import MessagePage from "../../Components/MessagePage/MessagePage";
 
+import Sidebar from "../../Components/SlideBar/SlideBar";
+
 
 function HomePage() {
+
+  // const navigate=useNavigate();
   const [contacts, setContacts] = useState([]);
   const [messages, setMessages] = useState({});
   const [loading, setLoading] = useState(true);
@@ -13,6 +17,8 @@ function HomePage() {
   const [selectedContact, setSelectedContact] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredContacts, setFilteredContacts] = useState(contacts);
+   const [isOpen, setIsOpen] = useState(false);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -65,6 +71,17 @@ function HomePage() {
   //     )
   //   );
   // };
+  
+  
+  const handleClick=(e)=>{
+  // e.preventDefault();
+  // navigate('/slideBar')
+  setIsOpen(!isOpen);
+
+
+
+        }
+    
 
      function handleChange(e){
         const value=e.target.value;
@@ -74,7 +91,7 @@ function HomePage() {
           contact.name.toLowerCase().includes(value.toLowerCase())
         )
         )
-    
+        
    }
 
   if (loading) return <div>Loading data...</div>;
@@ -95,8 +112,9 @@ function HomePage() {
       <div className={styles.body}>
         <div className={styles.leftPane}>
           <div className={styles.header}>
-            <div className={styles.menuIcon}>
-              <Icons.MenuIcon />
+            <div className={styles.menuIcon}  onClick={handleClick}>
+              <Sidebar  toggleSidebar={handleClick} isOpen={isOpen} />
+              
             </div>
             <div className={styles.title}>
               <Icons.TelegramIcon className={styles.telegramLogo} /> Telegram
